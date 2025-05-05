@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IsController;
 use App\Http\Controllers\MusteriController;
 use App\Http\Controllers\TeklifController;
+use App\Http\Controllers\TeknikDataController;
 
 
 Route::get('/', [HomeController::class, 'index'])->middleware(['auth']);
@@ -39,6 +40,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('isler.teknikdata', TeknikDataController::class);
 });
 
 require __DIR__.'/auth.php';

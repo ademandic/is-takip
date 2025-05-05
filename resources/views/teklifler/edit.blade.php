@@ -1,5 +1,10 @@
 <x-app-layout>
-    <div class="max-w-3xl mx-auto py-10 sm:px-6 lg:px-8">
+    <div class="flex min-h-screen bg-gray-50">
+
+        <x-isler.side-navbar :isler="$isler" />
+
+        <main class="flex-1 p-6 bg-gray-100">
+
         <h1 class="text-2xl font-bold text-gray-800 mb-6">Teklif Düzenle (İş No: {{ $isler->is_no }})</h1>
 
         <form method="POST" action="{{ route('isler.teklifler.update', ['isler' => $isler, 'teklif' => $teklif]) }}" class="bg-white p-6 rounded-lg shadow space-y-6">            
@@ -32,5 +37,6 @@
                 </button>
             </div>
         </form>
+        </main>
     </div>
 </x-app-layout>

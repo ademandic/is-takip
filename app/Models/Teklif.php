@@ -20,7 +20,7 @@ class Teklif extends Model
     ];
 
     public function isModel()
-{
-    return $this->belongsTo(Is::class, 'is_id');
-}
+    {
+        return $this->belongsTo(Is::class, 'is_id');
+    }
 }

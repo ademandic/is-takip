@@ -6,10 +6,11 @@ use App\Models\Is;
 use App\Models\Teklif;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf; // Yukarıya ekle
+use App\Models\TeknikData;
 
 class TeklifController extends Controller
 {
-    public function index(Is $isler)
+public function index(Is $isler)
 {
     $teklifler = $isler->teklifler()->latest()->get();
     return view('teklifler.index', compact('isler', 'teklifler'));
@@ -60,9 +61,10 @@ public function update(Request $request, Is $isler, Teklif $teklif)
         return redirect()->route('isler.teklifler.index', $isler->id)->with('success', 'Teklif başarıyla silindi!');
     }
 
-    public function pdf(Is $isler, Teklif $teklif)
+    public function pdf(Is $isler, Teklif $teklif, TeknikData $teknikdata)
     {
-        $pdf = Pdf::loadView('teklifler.pdf', compact('isler', 'teklif'));
+        $teknikdata = TeknikData::where('is_id', $isler->id)->first();
+        $pdf = Pdf::loadView('teklifler.pdf', compact('isler', 'teklif', 'teknikdata'));
 
         return $pdf->download('teklif_'.$teklif->teklif_no.'.pdf');
     }

@@ -33,4 +33,9 @@ class Is extends Model
     {
         return $this->hasMany(Teklif::class, 'is_id');
     }
+
+    public function teknikdata()
+    {
+        return $this->hasMany(TeknikData::class, 'is_id');
+    }
 }
