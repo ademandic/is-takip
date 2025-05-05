@@ -38,4 +38,9 @@ class Is extends Model
     {
         return $this->hasMany(TeknikData::class, 'is_id');
     }
+    
+    public function files()
+    {
+        return $this->hasMany(File::class, 'is_id');
+    }
 }

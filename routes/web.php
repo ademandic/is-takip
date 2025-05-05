@@ -7,6 +7,7 @@ use App\Http\Controllers\IsController;
 use App\Http\Controllers\MusteriController;
 use App\Http\Controllers\TeklifController;
 use App\Http\Controllers\TeknikDataController;
+use App\Http\Controllers\FileController;
 
 
 Route::get('/', [HomeController::class, 'index'])->middleware(['auth']);
@@ -44,6 +45,10 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('isler.teknikdata', TeknikDataController::class);
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('isler.files', FileController::class)->only(['index', 'create', 'store', 'destroy']);
 });
 
 require __DIR__.'/auth.php';

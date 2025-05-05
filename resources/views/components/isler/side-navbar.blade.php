@@ -14,9 +14,9 @@
             Teknik Data
         </a>
 
-        <a href="#"
-           class="block px-4 py-2 rounded text-gray-400 cursor-not-allowed">
-            Dosyalar (yakında)
+        <a href="{{ route('isler.files.index', $isler->id) }}"
+           class="block px-4 py-2 rounded {{ request()->routeIs('isler.files.*') ? 'bg-blue-600 text-white' : 'text-gray-700 hover:bg-blue-100' }}">
+            Dosyalar
         </a>
     </nav>
 </div>
