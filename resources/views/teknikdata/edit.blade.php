@@ -18,6 +18,7 @@
                         'sistem_tipi' => 'Sistem Tipi',
                         'sogutma_burcu' => 'Soğutma Burcu',
                         'nozzle_adedi' => 'Nozzle Adedi',
+                        'nozzle_capi' => 'Nozzle Çapı',
                         'kalip_goz_adedi' => 'Kalıp Göz Adedi',
                         'giris_capi' => 'Giriş Çapı',
                         'sr_alani' => 'SR Alanı'

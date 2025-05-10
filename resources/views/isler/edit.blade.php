@@ -28,6 +28,11 @@
                 <input type="text" name="musteri_referans_no" value="{{ $is->musteri_referans_no }}" class="mt-1 block w-full border-gray-300 rounded shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
             </div>
 
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Sistem ID No</label>
+                <input type="text" name="sistem_id_no" value="{{ $is->sistem_id_no }}" class="mt-1 block w-full border-gray-300 rounded shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+            </div>
+
             <div class="flex justify-end">
                 <button type="submit" class="bg-yellow-600 text-white px-4 py-2 rounded hover:bg-yellow-700">
                     Güncelle

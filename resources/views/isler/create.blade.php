@@ -8,7 +8,7 @@
 
             <div>
                 <label class="block text-sm font-medium text-gray-700">İş No</label>
-                <input type="text" name="is_no" required class="mt-1 block w-full border-gray-300 rounded shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                <input type="text" name="is_no" value="{{ old('is_no', $yeniIsNo) }}" readonly required class="mt-1 block w-full border-gray-300 rounded shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
             </div>
 
             <div>
@@ -23,6 +23,11 @@
             <div>
                 <label class="block text-sm font-medium text-gray-700">Müşteri Referans No</label>
                 <input type="text" name="musteri_referans_no" class="mt-1 block w-full border-gray-300 rounded shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Sistem ID No</label>
+                <input type="text" name="sistem_id_no" class="mt-1 block w-full border-gray-300 rounded shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
             </div>
 
             <div class="flex justify-end">

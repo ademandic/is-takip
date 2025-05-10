@@ -16,6 +16,7 @@ class TeknikData extends Model
         'sistem_tipi',
         'sogutma_burcu',
         'nozzle_adedi',
+        'nozzle_capi',
         'kalip_goz_adedi',
         'giris_capi',
         'sr_alani',

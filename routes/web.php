@@ -12,6 +12,8 @@ use App\Http\Controllers\FileController;
 
 Route::get('/', [HomeController::class, 'index'])->middleware(['auth']);
 
+Route::get('/home', [HomeController::class, 'index'])->middleware(['auth'])->name('home');
+
 Route::resource('musteriler', MusteriController::class)->middleware(['auth']);
 
 Route::middleware(['auth'])->group(function () {

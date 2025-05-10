@@ -10,7 +10,7 @@
                     <div class="bg-white p-6 rounded shadow space-y-6">
                         <fieldset class="border border-gray-300 p-4 rounded">
                             <legend class="text-lg font-medium text-gray-700">Sistem Bilgileri</legend>
-                            @foreach(['sistem_tipi', 'sogutma_burcu', 'nozzle_adedi', 'kalip_goz_adedi', 'giris_capi', 'sr_alani'] as $field)
+                            @foreach(['sistem_tipi', 'sogutma_burcu', 'nozzle_adedi', 'nozzle_capi', 'kalip_goz_adedi', 'giris_capi', 'sr_alani'] as $field)
                                 <div class="mt-4">
                                     <span class="block text-sm font-medium text-gray-600 capitalize">{{ str_replace('_', ' ', $field) }}:</span>
                                     <span class="text-gray-800">{{ $teknikdata->$field }}</span>

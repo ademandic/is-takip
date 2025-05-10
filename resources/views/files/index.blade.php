@@ -8,7 +8,7 @@
             <h1 class="text-2xl font-bold text-gray-800 mb-6">Dosyalar</h1>
 
             <div class="mb-4">
-                <a href="{{ route('isler.files.create', $isler->id) }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                <a href="{{ route('isler.files.create', $isler->id) }}" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white text-sm font-medium rounded-md shadow hover:from-blue-600 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition">
                     Yeni Dosya Yükle
                 </a>
             </div>

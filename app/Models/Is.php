@@ -15,6 +15,7 @@ class Is extends Model
         'is_no',
         'musteri_id',
         'musteri_referans_no',
+        'sistem_id_no',
         'kayit_tarihi',
         'user_id',
     ];

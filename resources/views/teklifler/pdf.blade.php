@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <title>Teklif Formu</title>
     <style>
-        body { font-family: DejaVu Sans, sans-serif; font-size: 12px; }
+        @font-face {
+            font-family: 'liberationsans';
+            src: url('{{ resource_path("fonts/LiberationSans-Regular.ttf") }}') format('truetype');
+        }
+        body { font-family: notosans, sans-serif; font-size: 12px; }
         .header { text-align: center; margin-bottom: 5px; }
         .info-table, .offer-table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         .info-table th, .info-table td, .offer-table th, .offer-table td {
             border: 1px solid #ddd;
@@ -37,6 +41,7 @@
         {
             float:left;
             width:48%;
+            clear:left;
         }
 
         ul li{
@@ -50,14 +55,16 @@
     </style>
 </head>
 <body>
+    <div align="left">
+        <img src="{{ public_path('storage/img/logo.svg') }}"  style="width: 100px; height: auto;"> 
+    </div>
     <div class="header">
-        <h3 style="margin:0; padding:0;"><!--<img style="width:30%;" src="{{ public_path('storage/img/logo_temp.jpeg') }}">-->UNIWAY HOT SOLUTIONS</h3> <!-- İstersen burayı dinamik de yaparız -->
-        <h1>TEKLİF FORMU</h1>
+        <h1>TEKLIF FORMU</h1>
     </div>
     <div class="firma-bilgi-div">
         <table class="info-table"> 
             <tr>
-                <td><strong>Hazırlayan:</strong> {{ 'Ozan Güzel' }}</td>
+                <td><strong>Hazirlayan:</strong> {{ 'Ozan Guzel' }}</td>
                 <td><strong>Tarih:</strong> {{ date('d-m-Y', strtotime($teklif->created_at)) }}</td>
             </tr>
             <tr>
@@ -71,18 +78,18 @@
         </table>
     </div>
     <div class="musteri-info-div">
-        <table class="info-table"> 
+        <table class="info-table" style="clear:right;"> 
             <tr>
-                <td><strong>Ünvan:</strong> {{ $isler->musteri->musteri_unvan }}</td>
+                <td><strong>Unvan:</strong> {{ $isler->musteri->musteri_unvan }}</td>
             </tr>
             <tr>
-                <td><strong>İlgili Kişi:</strong> {{ $isler->musteri->ilgili_kisi }}</td>
+                <td><strong>Ilgili Kisi:</strong> {{ $isler->musteri->ilgili_kisi }}</td>
             </tr>
             <tr>
                 <td colspan="2"><strong>Adres:</strong> {{ $isler->musteri->adres }}</td>
             </tr>
             <tr>
-                <td colspan="2"><strong>İlgili Kişi E-Posta:</strong> {{ $isler->musteri->ilgili_kisi_email }}</td>
+                <td colspan="2"><strong>Ilgili Kisi E-Posta:</strong> {{ $isler->musteri->ilgili_kisi_email }}</td>
             </tr>
         </table>
     </div>
@@ -90,12 +97,12 @@
     <div>
         <table class="info-table">
         <tr>
-            <th align="left">Ödeme Şekli:</th>
-            <td align="left">Peşin</td>
+            <th align="left">Odeme Sekli:</th>
+            <td align="left">Pesin</td>
             <th align="left">Teslim Tarihi:</th>
-            <td align="left">Resim onayından sonra 4-5 hafta</td>
-            <th align="left">Teklif Süresi:</th>
-            <td align="left">25 Gün</td>
+            <td align="left">Resim onayindan sonra 4-5 hafta</td>
+            <th align="left">Teklif Suresi:</th>
+            <td align="left">25 Gun</td>
         </tr>
         </table>
     </div>
@@ -103,7 +110,7 @@
         <thead>
             <tr>
                 <th align="center" colspan="2">
-                    Teklif Detayları
+                    Teklif Detaylari
                 </th>
             </tr>
         </thead>
@@ -111,23 +118,24 @@
             <tr>
                 <td colspan="2">
                     <fieldset style="border-color:#ddd; margin-bottom:10px;">
-                        <legend>Sistem Detayları</legend>
+                        <legend>Sistem Detaylari</legend>
                         <ul style="list-style: none; padding:0; margin:0; padding:5px">
                             <li>Sistem Tipi: <strong>{{ $teknikdata->sistem_tipi }}</strong></li>
-                            <li>Soğutma Burcu: <strong>{{ $teknikdata->sogutma_burcu }}</strong></li>
+                            <li>Sogutma Burcu: <strong>{{ $teknikdata->sogutma_burcu }}</strong></li>
                             <li>Nozzle Adedi: <strong>{{ $teknikdata->nozzle_adedi }}</strong></li>
-                            <li>Kalıp Göz Adedi: <strong>{{ $teknikdata->kalip_goz_adedi }}</strong></li>
-                            <li>Giriş Çapı: <strong>{{ $teknikdata->giris_capi }}</strong></li>
+                            <li>Nozzle Capi: <strong>{{ $teknikdata->nozzle_capi }}</strong></li>
+                            <li>Kalip Goz Adedi: <strong>{{ $teknikdata->kalip_goz_adedi }}</strong></li>
+                            <li>Giris Capi: <strong>{{ $teknikdata->giris_capi }}</strong></li>
                             <li>SR: <strong>{{ $teknikdata->sr_alani }}</strong></li>
                         </ul>
                     </fieldset>
                     <fieldset style="border-color:#ddd;">
-                        <legend>Parça Detayları</legend>
+                        <legend>Parca Detaylari</legend>
                         <ul style="list-style: none; padding:0; margin:0; padding:5px">
-                            <li>Parça Gramajı: <strong>{{ $teknikdata->parca_gramaji }}</strong></li>
-                            <li>Parça Et Kalınlığı: <strong>{{ $teknikdata->parca_et_kalinligi }}</strong></li>
+                            <li>Parca Gramaji: <strong>{{ $teknikdata->parca_gramaji }}</strong></li>
+                            <li>Parca Et Kalinligi: <strong>{{ $teknikdata->parca_et_kalinligi }}</strong></li>
                             <li>Malzeme Bilgisi: <strong>{{ $teknikdata->malzeme_bilgisi }}</strong></li>
-                            <li>Parça Görselliği: <strong>{{ $teknikdata->parca_gorselligi }}</strong></li>
+                            <li>Parca Gorselligi: <strong>{{ $teknikdata->parca_gorselligi }}</strong></li>
                         </ul>
                     </fieldset>
                 </td>
@@ -148,29 +156,29 @@
                     <div>
                         <strong style="font-weight: 600;">GARANTI SURELERI VE SARTLARI </strong><br />
                         <ul>
-                            <li>Manifold ve Meme Gövdeleri:</li><ul>
-                            <li>Aşındırıcı içermeyen malzemeler için 2 yıl</li> 
-                            <li>Aşındırıcı içerikli malzemeler için 1 yıl</li></ul></li>
-                            <li>Rezistans ve Termokupllar: 1 Yıl</li>
-                            <li>Valvepin, PGB, Ana Giriş Memesi, Gatebush ve Uçlar:</li><ul>
-                            <li>Aşındırıcı içermeyen malzemeler için 1 Yıl</li>
-                            <li>Aşındırıcı içerikli malzemeler için 6 Ay</li></ul>
-                            <li>Tüketilen Parçalar(Örn: O-ring): 6 Ay</li>
+                            <li>Manifold ve Meme Govdeleri:</li><ul>
+                            <li-Asindirici icermeyen malzemeler icin 2 yil</li> 
+                            <li-Asindirici icerikli malzemeler icin 1 yil</li></ul></li>
+                            <li>Rezistans ve Termokupllar: 1 Yil</li>
+                            <li>Valvepin, PGB, Ana Giris Memesi, Gatebush ve Uclar:</li><ul>
+                            <li-Asindirici icermeyen malzemeler icin 1 Yil</li>
+                            <li-Asindirici icerikli malzemeler icin 6 Ay</li></ul>
+                            <li>Tuketilen Parcalar(Orn: O-ring): 6 Ay</li>
                         </ul>
                     </div>
                 </td>
                 <td valign="top" style="width:49%;  border-left:1px solid #ddd;">
                     <div>
-                        <strong style="font-weight: 600;">ÖDEME SARTLARI </strong><br />
+                        <strong style="font-weight: 600;">ODEME SARTLARI </strong><br />
                         <ul>
-                            <li>KDV DAHİL TUTAR: <strong style="color:red">{{ number_format($teklif->tutar*1.2, 2) }} USD </strong></li>
-                            <li>Faturalar <strong style="color:red">USD</strong> olarak düzenlenecektir, faturadaki kur <u>TCMB'deki döviz satış kuru</u> olacaktır</li>
+                            <li>KDV DAHIL TUTAR: <strong style="color:red">{{ number_format($teklif->tutar*1.2, 2) }} USD </strong></li>
+                            <li>Faturalar <strong style="color:red">USD</strong> olarak duzenlenecektir, faturadaki kur <u>TCMB'deki doviz satis kuru</u> olacaktır</li>
                         </ul>
 
                         <strong style="font-weight: 600;">BANKA BILGILERI </strong><br />
                         <ul>
-                            <li>QNB Bankası (TL): <strong>TR41 0011 1000 0000 0154 9653 21</strong></li>
-                            <li>Vakıfbank (TL): <strong>TR30 0001 5001 5800 7355 3753 48</strong></li>
+                            <li>QNB Bankasi (TL): <strong>TR41 0011 1000 0000 0154 9653 21</strong></li>
+                            <li>Vakifbank (TL): <strong>TR30 0001 5001 5800 7355 3753 48</strong></li>
                         </ul>
                         </ul>
                     </div>
@@ -179,7 +187,7 @@
         </table>
     </div>
     <div class="signature">
-        <p><strong>Yetkili İmza</strong></p>
+        <p><strong>Yetkili Imza</strong></p>
     </div>
 </body>
 </html>

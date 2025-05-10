@@ -7,6 +7,8 @@ use App\Models\Teklif;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf; // Yukarıya ekle
 use App\Models\TeknikData;
+use Illuminate\Support\Facades\Storage;
+use App\Models\File;
 
 class TeklifController extends Controller
 {
@@ -64,9 +66,26 @@ public function update(Request $request, Is $isler, Teklif $teklif)
     public function pdf(Is $isler, Teklif $teklif, TeknikData $teknikdata)
     {
         $teknikdata = TeknikData::where('is_id', $isler->id)->first();
+
+        Pdf::setOptions([
+            'isHtml5ParserEnabled' => true,
+            'isPhpEnabled' => true,
+        ]);
+
         $pdf = Pdf::loadView('teklifler.pdf', compact('isler', 'teklif', 'teknikdata'));
 
-        return $pdf->download('teklif_'.$teklif->teklif_no.'.pdf');
+        $dosyaAdi = 'Teklif_' . $isler->is_no . '_' . now()->format('Ymd_His') . '.pdf';
+        $dosyaPath = 'dosyalar/' . $dosyaAdi;
+
+        Storage::disk('public')->put($dosyaPath, $pdf->output());
+
+        File::create([
+            'is_id' => $isler->id,
+            'dosya_adi' => $dosyaAdi,
+            'dosya_yolu' => $dosyaPath,
+        ]);
+
+        return $pdf->download($dosyaAdi);
     }
 
 }
